@@ -1,0 +1,13 @@
+﻿  WorldCollection.cpp
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(48,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(65,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(83,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(97,41): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(112,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(150,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(152,49): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(169,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(187,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(196,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Gamin\source\repos\Redo Project 2\Redo Project 2\WorldCollection.cpp(226,23): warning C4018: '<': signed/unsigned mismatch
+  Redo Project 2.vcxproj -> C:\Users\Gamin\source\repos\Redo Project 2\Debug\Redo Project 2.exe
