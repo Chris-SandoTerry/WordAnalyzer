@@ -2,18 +2,13 @@
 #include<iostream>
 #include<vector>
 
-
 using namespace std;
 
 struct CleansedWord
 {
     string originalWord;
-    string cleansedWord;
-   
+    string cleansedWord;   
     int frequency;
-
-
-
 };
 
 
@@ -35,8 +30,6 @@ public:
     void PrintVector(vector<CleansedWord> anything);
 
 private:
-    vector <CleansedWord> allWords;
-   
-  
+    vector <CleansedWord> allWords; 
 };
 
