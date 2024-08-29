@@ -1,13 +1,15 @@
-#include "WorldCollection.h"
-
-#include<iostream>
-#include<fstream>
+//
+// Created by Christopher on 8/29/2024.
+//
+#include "WordCollection.h"
+#include <iostream>
+#include <fstream>
 #include<vector>
 #include<string>
 
 using namespace std;
 
-WordCollection::WordCollection(string path)
+WordCollection::WordCollection(const string &path)
 {
     ifstream infile;
 
@@ -15,24 +17,26 @@ WordCollection::WordCollection(string path)
 
     if (infile.good())
     {
-        string bingo;
-        string clean;
+        string originalFile;
+        string cleanseFile;
 
         while (infile.good())
         {
-            infile >> bingo;
-            clean = cleanseWord(bingo);
-            if(clean == "")
+            infile >> originalFile;
+            cleanseFile = cleanseWord(originalFile);
+
+            //If the cleanse File has no Space continue
+            if(cleanseFile == "")
             {
                 continue;
             }
-            if (!wordSearch(clean))
+            if (!wordSearch(cleanseFile))
             {
-                allWords.push_back({ bingo,clean,1 });
+                allWords.push_back({ originalFile,cleanseFile,1 });
             }
         }
 
-      
+
     }
     else
     {
@@ -44,12 +48,12 @@ WordCollection::WordCollection(string path)
 
 int WordCollection::getWordCount()
 {
-    int Bum = 0;
+    int wordCount = 0;
     for(int i = 0; i < allWords.size(); i++)
     {
-        Bum = Bum + allWords[i].frequency;
+        wordCount = wordCount + allWords[i].frequency;
     }
-	return Bum;
+	return wordCount;
 }
 
 int WordCollection::getDistinctWordCount()
@@ -57,19 +61,18 @@ int WordCollection::getDistinctWordCount()
     return allWords.size();
 }
 
-bool WordCollection::wordSearch(string cheese)
+bool WordCollection::wordSearch(string word)
 {
    bool retVal = false;
-   //binary
 
     for(int i = 0; i < allWords.size(); i++)
     {
-     if(cheese == allWords[i].cleansedWord)
-     {
+      if(word == allWords[i].cleansedWord)
+      {
          retVal = true;
          allWords[i].frequency++;
-     }
-    
+      }
+
     }
     return retVal;
 }
@@ -91,13 +94,13 @@ vector<CleansedWord> WordCollection::getMostUsedWords(int numTopWords)
         }
 
       }
-    
+
     }
 
     for( int i = allWords.size()- 1 ; i > allWords.size() - numTopWords - 1; i--)
     {
         MostUsed.push_back(allWords[i]);
-    
+
     }
 
 	return MostUsed;
@@ -105,7 +108,7 @@ vector<CleansedWord> WordCollection::getMostUsedWords(int numTopWords)
 
 vector<CleansedWord> WordCollection::getCompare(int numTopWords, int minWordLength)
 {
-    vector<CleansedWord> autoBots;
+    vector<CleansedWord> topWords;
 
     for (int i = 0; i < numTopWords; i++)
     {
@@ -115,7 +118,7 @@ vector<CleansedWord> WordCollection::getCompare(int numTopWords, int minWordLeng
            {
                if(allWords[i + 1].cleansedWord.length() > 9)
                {
-               
+
                    if (allWords[i].frequency > allWords[i + 1].frequency)
                    {
                        CleansedWord Currency;
@@ -123,60 +126,60 @@ vector<CleansedWord> WordCollection::getCompare(int numTopWords, int minWordLeng
                        allWords[i] = allWords[i + 1];
                        allWords[i + 1] = Currency;
                    }
-               
+
                }
-               else 
+               else
                {
                    CleansedWord Currency;
                    Currency = allWords[i];
                    allWords[i] = allWords[i + 1];
                    allWords[i + 1] = Currency;
-                
+
                }
 
 
 
 
 
-               
+
            }
 
         }
 
     }
 
-    int ant = allWords.size() - 1;
+    int lastWord = allWords.size() - 1;
 
-    while (autoBots.size() < numTopWords)
+    while (topWords.size() < numTopWords)
     {
-        if (allWords[ant].cleansedWord.length() >= minWordLength)
-        { 
-            autoBots.push_back(allWords[ant]);
-           
+        if (allWords[lastWord].cleansedWord.length() >= minWordLength)
+        {
+            topWords.push_back(allWords[lastWord]);
+
 
         }
-        
-        
-        ant--;
+
+
+        lastWord--;
     }
-	return autoBots;
+	return topWords;
 }
 
 vector<CleansedWord> WordCollection::getWordsUsed(int usedNumTimes)
 {
-    vector<CleansedWord>Bumblebee;
+    vector<CleansedWord> numTimesWordUsed;
 
     for(int i = 0; i < allWords.size(); i++)
     {
 
      if(allWords[i].frequency == usedNumTimes)
      {
-         Bumblebee.push_back(allWords[i]);
+         numTimesWordUsed.push_back(allWords[i]);
      }
-      
+
     }
 
-    return Bumblebee;
+    return numTimesWordUsed;
 }
 
 string WordCollection::cleanseWord(string cleansedWord)
@@ -199,12 +202,12 @@ string WordCollection::cleanseWord(string cleansedWord)
     }
 
     return cleansedWord;
-    
+
 }
 
 void WordCollection::printAllWords()
 {
- 
+
     cout << "Word Count:" << getWordCount() << endl;
     cout << "=======================================" << endl;
     cout << "Distinct Word Count:"<< getDistinctWordCount() << endl;
@@ -217,8 +220,8 @@ void WordCollection::printAllWords()
     cout << "=======================================" << endl;
     cout << "31 Most Used words that are 10 letters long: " << endl;
     PrintVector(getCompare(31, 10));
-    
- 
+
+
 }
 
 void WordCollection::PrintVector(vector<CleansedWord> anything)
