@@ -136,16 +136,8 @@ vector<CleansedWord> WordCollection::getCompare(int numTopWords, int minWordLeng
                    allWords[i + 1] = Currency;
 
                }
-
-
-
-
-
-
            }
-
         }
-
     }
 
     int lastWord = allWords.size() - 1;
@@ -207,7 +199,6 @@ string WordCollection::cleanseWord(string cleansedWord)
 
 void WordCollection::printAllWords()
 {
-
     cout << "Word Count:" << getWordCount() << endl;
     cout << "=======================================" << endl;
     cout << "Distinct Word Count:"<< getDistinctWordCount() << endl;
@@ -220,8 +211,6 @@ void WordCollection::printAllWords()
     cout << "=======================================" << endl;
     cout << "31 Most Used words that are 10 letters long: " << endl;
     PrintVector(getCompare(31, 10));
-
-
 }
 
 void WordCollection::PrintVector(vector<CleansedWord> anything)
