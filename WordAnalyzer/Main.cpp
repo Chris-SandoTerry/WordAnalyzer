@@ -1,14 +1,9 @@
 #include<iostream>
 #include<string>
 #include<vector>
-
 #include"WorldCollection.h"
 
 using namespace std;
-
-
-
-
 
 int main()
 {
